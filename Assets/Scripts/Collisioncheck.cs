@@ -7,7 +7,7 @@ public class DirectionalWeakSpotBlocker : MonoBehaviour
     public float rearConeAngle = 70f;
 
     [Tooltip("Optional: Nur Angriffe dieses Tags berücksichtigen (leer = alle).")]
-    public string attackerTag = ""; // z.B. "CapsuleB"
+    [SerializeField] GameObject player;
 
     [Header("Block-Verhalten (kein Bounce)")]
     [Tooltip("Kleiner Sicherheitsabstand beim Entklemmen.")]
@@ -39,9 +39,6 @@ public class DirectionalWeakSpotBlocker : MonoBehaviour
         var otherCol = collision.collider;
         var rb = otherCol.attachedRigidbody;
         if (rb == null) return;
-
-        if (!string.IsNullOrEmpty(attackerTag) && !otherCol.CompareTag(attackerTag))
-            return;
 
         if (IsFromBehind(otherCol.transform))
         {
