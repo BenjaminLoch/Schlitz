@@ -1,10 +1,7 @@
 using UnityEngine;
 
-public class Camerahandler : MonoBehaviour
+public class CapsuleB : MonoBehaviour
 {
-    public Transform objekt;
-
-    private int hight;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
