@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerDeath : MonoBehaviour
+public class CapsuleB : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -12,10 +12,5 @@ public class PlayerDeath : MonoBehaviour
     void Update()
     {
         
-    }
-    public void Die()
-    {
-        Debug.Log("Spieler ist tot!");
-        Destroy(gameObject); //Spieler wird zerstoert
     }
 }
