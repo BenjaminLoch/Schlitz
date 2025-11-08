@@ -11,6 +11,8 @@ public class PlayerDash : MonoBehaviour
 
     private void Update()
     {
+        Vector3 guckRichtung = (mousePos.position - objPos.position).normalized;
+        transform.forward = guckRichtung;
         if (Input.GetMouseButtonDown(0))
         {
             StartCoroutine(Dash());
