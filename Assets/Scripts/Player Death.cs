@@ -13,4 +13,9 @@ public class PlayerDeath : MonoBehaviour
     {
         
     }
+    public void Die()
+    {
+        Debug.Log("Spieler ist tot!");
+        Destroy(gameObject); //Spieler wird zerstoert
+    }
 }
