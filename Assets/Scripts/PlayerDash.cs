@@ -67,7 +67,7 @@ public class PlayerDash : MonoBehaviour
         }
     }
     
-    private void Die()
+    public void Die()
     {
         Debug.Log("Spieler ist tot!");
         Destroy(thisGameObj); //Spieler wird zerstoert

@@ -31,6 +31,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
             if (player != null)
             {
                 Debug.Log("Spieler soll sterben");
+                player.Die();
             }
         }
     }
