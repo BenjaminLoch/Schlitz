@@ -36,6 +36,7 @@ public class EnemyDeath : MonoBehaviour
 
     private IEnumerator DestroyAfterFrame()
     {
+        countEnemyDown.Invoke();
         yield return null;              // warte bis NÄCHSTER Frame (nicht FixedUpdate)
         yield return new WaitForFixedUpdate(); // +1 Physik-Frame
         Destroy(thisGameObj);
