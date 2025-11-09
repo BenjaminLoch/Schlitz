@@ -32,6 +32,11 @@ public class PlayerDash : MonoBehaviour
         transform.forward = guckVek;
         if (Input.GetMouseButtonDown(0) && !isDashing)
         {
+            Transform ghostChild = transform.Find("ArrowBase");
+            if (ghostChild != null)
+            {
+                Instantiate(ghostChild.gameObject, ghostChild.position, ghostChild.rotation);
+            }
             dashVektor = (mousePos.position - objPos.position).normalized;
             isDashing = true;
             dashTimer = dashTime;
