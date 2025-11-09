@@ -26,6 +26,8 @@ public class PlayerDash : MonoBehaviour
     }
     void Update()
     {
+        if (thisGameObj == null)
+        return;
         Vector3 guckVek = (mousePos.position - objPos.position).normalized;
         transform.forward = guckVek;
         if (Input.GetMouseButtonDown(0) && !isDashing)
@@ -63,7 +65,6 @@ public class PlayerDash : MonoBehaviour
             Debug.Log(collision.gameObject.name);
             Vector3 reflect = Vector3.Reflect(dashVektor, collision.contacts[0].normal);
             dashVektor = reflect.normalized;
-
             thisRB.linearVelocity = dashVektor * dashSpeed * bounceFactor;
         }
     }
@@ -72,5 +73,6 @@ public class PlayerDash : MonoBehaviour
     {
         Debug.Log("Spieler ist tot!");
         Destroy(thisGameObj); //Spieler wird zerstoert
+        return;
     }
 }
