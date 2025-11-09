@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerDash : MonoBehaviour
 {
     [SerializeField] private Transform mousePos;
-    [SerializeField] private float dashCount = 7f;
+    public float dashCount = 7f;
     [SerializeField] private float dashSpeed = 45f;
     [SerializeField] private float dashTime = 0.15f;
     [SerializeField] private float bounceFactor = 0.6f;
@@ -48,6 +48,7 @@ public class PlayerDash : MonoBehaviour
         {
             thisRB.linearVelocity = Vector3.zero;
             dashCount--;
+            Debug.Log(dashCount);
             isDashing = false;
             if (dashCount == 0)
             {
@@ -58,13 +59,19 @@ public class PlayerDash : MonoBehaviour
     
     private void OnCollisionEnter(Collision collision)
     {
-        if (isDashing)
+        if (!isDashing) return;
+
+        EnemyDeath deathScript = collision.gameObject.GetComponentInParent<EnemyDeath>();
+        if (deathScript != null && deathScript.isDead)
         {
-            Debug.Log(collision.gameObject.name);
-            Vector3 reflect = Vector3.Reflect(dashVektor, collision.contacts[0].normal);
-            dashVektor = reflect.normalized;
-            thisRB.linearVelocity = dashVektor * dashSpeed * bounceFactor;
+            Debug.Log("Kollision mit totem Gegner ignoriert");
+            return;
         }
+    
+        Debug.Log(collision.gameObject.name);
+        Vector3 reflect = Vector3.Reflect(dashVektor, collision.contacts[0].normal);
+        dashVektor = reflect.normalized;
+        thisRB.linearVelocity = dashVektor * dashSpeed * bounceFactor;
     }
     
     private void Die()
