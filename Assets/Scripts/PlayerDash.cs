@@ -74,7 +74,7 @@ public class PlayerDash : MonoBehaviour
         thisRB.linearVelocity = dashVektor * dashSpeed * bounceFactor;
     }
     
-    private void Die()
+    public void Die()
     {
         Debug.Log("Spieler ist tot!");
         Destroy(thisGameObj); //Spieler wird zerstoert
