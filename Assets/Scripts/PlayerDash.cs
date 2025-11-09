@@ -41,19 +41,17 @@ public class PlayerDash : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (isDashing)
-        {
-            dashTimer -= Time.fixedDeltaTime;
+        if (!isDashing) return;
 
-            if (dashTimer <= 0f)
+        dashTimer -= Time.fixedDeltaTime;
+        if (dashTimer <= 0f)
+        {
+            thisRB.linearVelocity = Vector3.zero;
+            dashCount--;
+            isDashing = false;
+            if (dashCount == 0)
             {
-                thisRB.linearVelocity = Vector3.zero;
-                dashCount--;
-                isDashing = false;
-                if (dashCount == 0)
-                {
-                    Die();
-                }
+                Die();
             }
         }
     }
